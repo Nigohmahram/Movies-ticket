@@ -16,6 +16,10 @@
      font-style: italic;
      font-display: swap;
  }
+ :root{
+     --standar-seat: #4aa5ff;
+     --vip-seat: #8bc34a;
+ }
 
 
 /* GLOBALL */
@@ -76,6 +80,7 @@ img{
 .movie-info{
      position: relative;
      z-index: 1 ;
+     padding-right: 60px;
 }
 
 .ticket-form {
@@ -88,12 +93,15 @@ img{
 .movie-info__title-wrapper {
      display: flex;
      align-items: center;
+     flex-wrap: wrap;
 }
 .movie-info__title {
      margin: 0;
      margin-right: 20px;
+     line-height: 1.2;
 }
 .movie-info__badge {
+     flex-shrink: 0;
      display: inline-block;
      padding: 5px;
      margin-right: 10px;
@@ -128,5 +136,119 @@ img{
 .ticket-form__close:focus{
      opacity: 1;
 }
-.visually-hidden {
+.diveder{
+     height: 2px;
+     margin-top: 20px;
+     margin-bottom: 50px ;
+     background-color: #3a3b42;
+     border: none;
 }
+/* CINEMA-SCREEN  */
+.cinema{
+     padding-left: 70px;
+     padding-right: 70px;
+}
+.cinema__screen{
+     display: flex;
+     justify-content: center;
+}
+/* CINEMA-SEAT */
+
+.cinema__seats-list {
+     display: flex;
+     justify-content: space-between;
+     padding: 0;
+     margin: 0;
+     list-style: none;
+}
+.cinema__seat {
+     width: 25px;
+     height: 25px;
+}
+.seat {
+     display: block;
+     cursor: pointer;
+}
+
+.seat__control {
+     position: relative;
+     z-index: 1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 14px;
+     width: 25px;
+     height: 25px;
+     border-radius: 50%;
+     background-color: var(--standar-seat);
+}
+.seat__vip .seat__control{
+     background-color: var(--vip-seat);
+}
+.seat__number{
+     opacity: 0;
+     transition: 0.3s ease;
+}
+.seat__checkbox:focus + .seat__control::before{
+     transform: scale(1);
+     opacity: 1;
+}
+.seat__checkbox:focus + .seat__control .seat__number{
+     opacity: 1;
+}
+.seat__control::before{
+     position: absolute;
+     top: -5px;
+     bottom: -5px;
+     right: -5px;
+     left: -5px;
+     border: 1px dotted var(--standar-seat);
+     border-radius: 50%;
+     content: "";
+     transform: calc(0);
+     opacity: 0;
+     transition: border 0.3s ease, transform 0.4s ease, opacity 0.4s ease;
+}
+.seat__vip .seat__control::before{
+     border: 1px dotted var(--vip-seat);
+}
+.seat:hover  .seat__control::before{
+     border: 1px solid var(--standar-seat);
+     transform: scale(1);
+     opacity: 1;
+}
+.seat__vip:hover  .seat__control::before{
+     border: 1px solid var(--vip-seat);
+}
+.seat:hover .seat__number{
+     opacity: 1;
+}
+.seat:active{
+     opacity: 0.5;
+}
+.seat__checkbox:checked + .seat__control::before{
+     border: 3px solid var(--vip-seat);
+     transform: scale(1);
+     opacity: 1;
+}
+.seat__vip.seat__checkbox:checked + .seat__control::before{
+     border: 3px solid var(--vip-seat);
+}
+.seat__checkbox:checked + .seat__control .seat__number{
+     opacity: 1;
+}
+/* Disabled holati */
+.seat__checkbox:disabled + .seat__control {
+     background-color: #ccc;
+     cursor: not-allowed;
+     pointer-events: none;
+   }
+
+   .seat__checkbox:disabled + .seat__control::before {
+     transform: scale(0);
+     opacity: 0;
+   }
+   .seat__checkbox:disabled + .seat__control .seat__number {
+     opacity: 1;
+     color: #777;
+   }
