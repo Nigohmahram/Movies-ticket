@@ -73,7 +73,7 @@ img{
      padding-right: 20px;
      margin-left: auto;
      margin-right: auto;
-     margin-top: 100px;
+     margin-top: 80px;
 }
 
 /* TICKET-FORM  */
@@ -84,7 +84,7 @@ img{
 }
 
 .ticket-form {
-     padding: 20px 20px 50px 20px;
+     padding: 20px;
      border-radius: 5px;
      background-color: #25262d;
      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -132,6 +132,28 @@ img{
      transition: opacity 0.4s ease;
 
 }
+.cinema__seats-list::before,
+.cinema__seats-list::after{
+     font-size: 13px;
+     color: #fff;
+}
+.cinema__seats-list:first-child::before,
+.cinema__seats-list:first-child::after{
+     content: '1';
+}
+.cinema__seats-list:nth-child(2)::before,
+.cinema__seats-list:nth-child(2)::after{
+     content: '2';
+}
+.cinema__seats-list:nth-child(3)::before,
+.cinema__seats-list:nth-child(3)::after{
+     content: '3';
+}
+.cinema__seats-list:nth-child(4)::before,
+.cinema__seats-list:nth-child(4)::after{
+     content: '4';
+}
+
 .ticket-form__close:hover,
 .ticket-form__close:focus{
      opacity: 1;
@@ -151,15 +173,22 @@ img{
 .cinema__screen{
      display: flex;
      justify-content: center;
+     margin-bottom: 30px;
 }
 /* CINEMA-SEAT */
-
 .cinema__seats-list {
      display: flex;
      justify-content: space-between;
+     align-items: center;
      padding: 0;
      margin: 0;
+     margin-bottom: 20px;
      list-style: none;
+}
+.cinema__poster{
+     transform-style: preserve-3d ;
+     transform-origin: center top;
+     transform: perspective(2000px) rotateX(-65deg);
 }
 .cinema__seat {
      width: 25px;
